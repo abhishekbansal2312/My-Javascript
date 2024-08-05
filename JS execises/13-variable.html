@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Variable Creation</title>
+  </head>
+  <body>
+    <h1>Create a Dynamic Variable</h1>
+    <form id="variableForm">
+      <label for="varName">Variable Name:</label>
+      <input type="text" id="varName" name="varName" required />
+      <br /><br />
+      <label for="varValue">Variable Value:</label>
+      <input type="text" id="varValue" name="varValue" required />
+      <br /><br />
+      <button type="submit">Create Variable</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("variableForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get the user-defined variable name and value
+          const varName = document.getElementById("varName").value;
+          const varValue = document.getElementById("varValue").value;
+
+          // Create a dynamic variable using the global object (window)
+          window[varName] = varValue;
+
+          // Log the dynamically created variable to the console
+          console.log(
+            `Variable '${varName}' created with value:`,
+            window[varName]
+          );
+
+          // Optionally, display the result on the web page
+          const result = document.createElement("p");
+          result.textContent = `Variable '${varName}' created with value: ${window[varName]}`;
+          document.body.appendChild(result);
+        });
+    </script>
+  </body>
+</html>

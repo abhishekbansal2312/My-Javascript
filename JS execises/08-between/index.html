@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let random = Math.floor(Math.random() * 10 + 1);
+
+      let input = prompt("Enter a number between 1 and 10");
+      if (input == random) {
+        alert("Congratulations! You have guessed the correct number");
+      } else {
+        alert("Try again! The number was " + random);
+      }
+    </script>
+  </body>
+</html>
