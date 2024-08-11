@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Stopwatch</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: aliceblue;
+      }
+      .div {
+        display: flex;
+        align-items: center;
+      }
+      button {
+        height: 40px;
+        width: 150px;
+        margin: 5px;
+      }
+      .buttons {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stopwatch">
+      <h1>StopWatch</h1>
+      <h1 id="time">00:00:00</h1>
+      <div class="buttons">
+        <button id="start" onclick="startTimer()">Start</button>
+        <button id="pause" onclick="pauseTimer()">Pause</button>
+        <button id="reset" onclick="resetTimer()">Reset</button>
+      </div>
+    </div>
+    <script>
+      let body = document.body;
+      let start = document.getElementById("start");
+      let pause = document.getElementById("pause");
+      let reset = document.getElementById("reset");
+      let time = document.getElementById("time");
+      let hold = true;
+    //   let pausee = false;
+
+      var increase = 0;
+      var seconds = 0;
+      var minutes = 0;
+      var hours = 0;
+      let timerr;
+      pause.disabled = true;
+      reset.disabled = true;
+      function startTimer() {
+        pause.disabled = false;
+        reset.disabled = false;
+        timerr = setInterval(() => {
+          increase++;
+          seconds = increase % 60;
+          seconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+          minutes = parseInt((increase / 60) % 60);
+          minutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+          hours = parseInt((increase * 60 * 60) % 24);
+          hours = hours < 10 ? `0${hours}` : `${hours}`;
+          time.textContent = `${hours}:${minutes}:${seconds}`;
+        }, 1000);
+      }
+      function pauseTimer() {
+        clearInterval(timerr);
+      }
+      function resetTimer() {
+        increase = 0;
+        seconds = 0;
+        minutes = 0;
+        hours = 0;
+        time.textContent = `00:00:00`;
+        clearInterval(timerr);
+        startTimer();
+      }
+    </script>
+  </body>
+</html>

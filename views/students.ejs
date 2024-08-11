@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("partials/head") %>
+  <body>
+    <%- include("partials/nav") %>
+
+    <h2>This is the header of the students page</h2>
+    <p>This is a paragraph in the HTML template from Node backend</p>
+
+    <ul>
+      <%students.forEach(function(student) { %>
+      <li><%= student %></li>
+      <% }); %>
+    </ul>
+    <script></script>
+  </body>
+</html>

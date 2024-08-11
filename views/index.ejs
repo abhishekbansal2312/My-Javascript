@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include ("partials/head") %>
+  <body>
+    <%- include("partials/nav") %>
+    <h2>This is the header</h2>
+    <p>This is a paragraph in the HTML template from Node backend</p>
+    <ul>
+      <% for(let i = 0; i < 5; i++) { %>
+      <li><%= `abhishek ${i}` %></li>
+      <% } %>
+    </ul>
+  </body>
+</html>
